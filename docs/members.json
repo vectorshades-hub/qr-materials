@@ -11,5 +11,18 @@
     "is_galvanized": "No",
     "left_conn": "User base/cap plate",
     "right_conn": "Plain end"
+  },
+  {
+    "piecemark": "14C3",
+    "type": "Column",
+    "section_size": "W16x40x1/2",
+    "grade": "A500C",
+    "length": "30-5 15/16",
+    "depth": "10.0",
+    "thick": "0.5",
+    "weight": "2000.92",
+    "is_galvanized": "Yes",
+    "left_conn": "User base/cap plate",
+    "right_conn": "Plain end"
   }
 ]
