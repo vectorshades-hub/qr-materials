@@ -147,7 +147,10 @@ if (!id) {
     .then(function(members) {
       var member = null;
       for (var i = 0; i < members.length; i++) {
-        if (members[i].piecemark === id) { member = members[i]; break; }
+        if (members[i].piecemark.toLowerCase() === id.toLowerCase()) {
+          member = members[i];
+          break;
+        }
       }
       if (!member) {
         showError('Member <b>"' + id + '"</b> not found in members.json.');
