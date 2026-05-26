@@ -97,30 +97,44 @@ function renderList(members) {
     list.innerHTML = '<div class="empty">No members found</div>';
     return;
   }
-  members.forEach(function(m) {
+
+  for (var i = 0; i < members.length; i++) {
+    var m    = members[i];
+    var pm   = m.piecemark   || "N/A";
+    var type = m.type        || "N/A";
+    var grade  = m.grade     || "";
+    var length = m.length    || "";
+    var section = m.section_size || "";
+
+    var sub = [type, grade, length].filter(Boolean).join(" \u2022 ");
+
     var a = document.createElement("a");
     a.className = "item";
-    a.href = "member.html?id=" + encodeURIComponent(m.piecemark);
+    a.href = "member.html?id=" + encodeURIComponent(pm);
     a.innerHTML =
       '<div class="item-left">' +
-        '<h3>' + m.piecemark + '</h3>' +
-        '<p>' + (m.type||"") +
-          (m.grade  ? " &bull; " + m.grade  : "") +
-          (m.length ? " &bull; " + m.length : "") +
-        '</p>' +
+        '<h3>' + pm + '</h3>' +
+        '<p>' + sub + (section ? ' &bull; ' + section : '') + '</p>' +
       '</div>' +
-      '<span class="item-badge">' + (m.type||"N/A") + '</span>';
+      '<span class="item-badge">' + type + '</span>';
     list.appendChild(a);
-  });
+  }
 }
 
 function filterList() {
   var q = document.getElementById("search").value.toLowerCase();
-  renderList(!q ? allMembers : allMembers.filter(function(m) {
-    return (m.piecemark||"").toLowerCase().includes(q) ||
-           (m.type     ||"").toLowerCase().includes(q) ||
-           (m.grade    ||"").toLowerCase().includes(q);
-  }));
+  if (!q) { renderList(allMembers); return; }
+  var filtered = [];
+  for (var i = 0; i < allMembers.length; i++) {
+    var m = allMembers[i];
+    if ((m.piecemark   ||"").toLowerCase().indexOf(q) !== -1 ||
+        (m.type        ||"").toLowerCase().indexOf(q) !== -1 ||
+        (m.grade       ||"").toLowerCase().indexOf(q) !== -1 ||
+        (m.section_size||"").toLowerCase().indexOf(q) !== -1) {
+      filtered.push(m);
+    }
+  }
+  renderList(filtered);
 }
 </script>
 </body>

@@ -122,16 +122,16 @@ var BASE_URL = window.location.origin + window.location.pathname
 var MEMBERS_URL = BASE_URL + "/members.json";
 
 var FIELDS = [
-  ["Type",       "type"],
-  ["Section",    "section_type"],
-  ["Grade",      "grade"],
-  ["Length",     "length"],
-  ["Depth",      "depth"],
-  ["Thickness",  "thick"],
-  ["Weight",     "weight"],
-  ["Galvanized", "is_galvanized"],
-  ["Left Conn",  "left_conn"],
-  ["Right Conn", "right_conn"],
+  ["Type",        "type"],
+  ["Section Size","section_size"],
+  ["Grade",       "grade"],
+  ["Length",      "length"],
+  ["Depth",       "depth"],
+  ["Thickness",   "thick"],
+  ["Weight",      "weight"],
+  ["Galvanized",  "is_galvanized"],
+  ["Left Conn",   "left_conn"],
+  ["Right Conn",  "right_conn"],
 ];
 
 var id = new URLSearchParams(window.location.search).get("id");
@@ -195,10 +195,10 @@ function saveExcel() {
   var m = window._member;
   if (!m) return;
 
-  var headers = ["Piecemark","Type","Section","Grade","Length","Depth",
+  var headers = ["Piecemark","Type","Section Size","Grade","Length","Depth",
                  "Thickness","Weight (plf)","Galvanized","Left Conn","Right Conn"];
   var values  = [
-    m.piecemark, m.type, m.section_type, m.grade, m.length,
+    m.piecemark, m.type, m.section_size, m.grade, m.length,
     m.depth, m.thick, m.weight, m.is_galvanized, m.left_conn, m.right_conn
   ].map(function(v) {
     return '"' + String(v || "N/A").replace(/"/g, '""') + '"';
