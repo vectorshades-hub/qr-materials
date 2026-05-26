@@ -1,0 +1,15 @@
+[
+  {
+    "piecemark": "14C2",
+    "type": "Column",
+    "section_size": "W16x40x1/2",
+    "grade": "A500C",
+    "length": "36-4 15/16",
+    "depth": "10.0",
+    "thick": "0.5",
+    "weight": "2024.92",
+    "is_galvanized": "No",
+    "left_conn": "User base/cap plate",
+    "right_conn": "Plain end"
+  }
+]
